@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum CommandType {
+  STATIC
+  DYNAMIC
+}
+
+enum Adapters {
+  TWITCH
+  DISCORD
+  CLI
+}
+
+model Command {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  aliases String[]
+  response    String
+  name    String
+  type    CommandType @default(STATIC)
+  enabled Boolean     @default(true)
+  cooldown Int        @default(0)
+  ownerOnly Boolean   @default(false)
+  disabledAdapters Adapters[] @default([])
+}
+
+model Setting {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  value   String
+}
+
+enum ServiceType {
+  SPOTIFY
+  TWITCH
+  TWITCH_BROADCASTER
+}
+
+model Credentials {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  service    ServiceType
+  value   Json
+
+  @@unique([service])
+}
