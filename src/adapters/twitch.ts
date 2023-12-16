@@ -172,7 +172,8 @@ export default class TwitchAdapter extends Adapter<TwitchContext> {
         case ActivityType.TwitchReadChat: {
           const payload: ActivityPayload[ActivityType.TwitchReadChat] = {
             message: text,
-            context: this.createContext(message as PrivateMessage)
+            context: this.createContext(message as PrivateMessage),
+            username: message.username
           }
           this.bot.brain.handle({
             type: activityType,

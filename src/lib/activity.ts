@@ -34,6 +34,7 @@ export type ActivityPayload = {
   }
   [ActivityType.TwitchReadChat]: {
     message: string
+    username: string
     context: Context
   }
 }

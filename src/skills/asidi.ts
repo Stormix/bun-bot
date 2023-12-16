@@ -16,7 +16,9 @@ export default class Asidi extends Skill {
       this.bot.pubSub.publish(
         'readChat',
         JSON.stringify({
-          message: activity.payload.message
+          type: 'readChat',
+          username: activity.payload.username,
+          message: activity.payload.message.slice(0, 100)
         })
       )
 
