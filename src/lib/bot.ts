@@ -13,6 +13,7 @@ import CredentialsManager from './credentials'
 import type Hook from './hook'
 import Logger from './logger'
 import Processor from './processor'
+import PubSub from './pubsub'
 
 class Bot {
   config: BotConfig = defaultConfig
@@ -26,6 +27,7 @@ class Bot {
   public readonly logger: Logger
   public readonly prisma: PrismaClient = new PrismaClient()
   public readonly artisan: Artisan
+  public readonly pubSub: PubSub
 
   /**
    * Creates a new bot instance
@@ -36,6 +38,7 @@ class Bot {
     this.processor = new Processor(this)
     this.artisan = new Artisan(this)
     this.credentials = new CredentialsManager(this)
+    this.pubSub = new PubSub(this)
   }
 
   get prefix() {
@@ -68,6 +71,7 @@ class Bot {
   async setup() {
     this.logger.debug('Setting up bot...')
 
+    await this.pubSub.setup()
     await this.brain.boot()
     await this.processor.load()
     await this.artisan.load()

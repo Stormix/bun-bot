@@ -20,15 +20,15 @@ export default class Music extends Skill {
       // Ensure spotify is auhtenticated
       if (!spotifyTokens) {
         this.logger.info(
-          'Spotify is not authenticated, open the following url:',
-          Spotify.login(`http://localhost:${this.bot.api.port}/spotify`)
+          'Spotify is not authenticated, open the following url:'
+          // Spotify.login(`http://localhost:${this.bot.api.port}/spotify`)
         )
-        await context.adapter.send(
-          `Spotify is not authenticated, open the following url: ${Spotify.login(
-            `http://localhost:${this.bot.api.port}/spotify`
-          )}`,
-          context
-        )
+        // await context.adapter.send(
+        //   `Spotify is not authenticated, open the following url: ${Spotify.login(
+        //     `http://localhost:${this.bot.api.port}/spotify`
+        //   )}`,
+        //   context
+        // )
         return
       }
 
