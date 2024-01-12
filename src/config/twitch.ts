@@ -6,5 +6,6 @@ export const RewardMapping: Record<string, ActivityType> = {
   '4b83dbd5-b3da-4a27-9789-ceeef443c6e2': ActivityType.TwitchRewardsVotekick,
   'b7b5360e-5682-4a20-a716-3ef5949f78f4': ActivityType.TwitchRewardsEndStream,
   '3110f2c7-90f7-49b1-8a51-2f8177ecd42c': ActivityType.TwitchReadChat,
-  'd181c2cc-c8fd-44fc-99e2-a3dfb30163d0': ActivityType.TwitchRoulette
+  'd181c2cc-c8fd-44fc-99e2-a3dfb30163d0': ActivityType.TwitchRoulette,
+  'f311f7d7-0188-4ad4-ad53-5c4e839d42f0': ActivityType.TwitchRouletteHitman
 }

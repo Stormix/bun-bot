@@ -7,7 +7,8 @@ export enum ActivityType {
   TwitchRewardsVotekick = 'TwitchRewardsVotekick',
   TwitchRewardsEndStream = 'TwitchRewardsEndStream',
   TwitchReadChat = 'TwitchReadChat',
-  TwitchRoulette = 'TwitchRoulette'
+  TwitchRoulette = 'TwitchRoulette',
+  TwitchRouletteHitman = 'TwitchRouletteHitman'
 }
 
 export type ActivityPayload = {
@@ -42,6 +43,11 @@ export type ActivityPayload = {
     context: Context
     message: string
     username: string
+  }
+  [ActivityType.TwitchRouletteHitman]: {
+    context: Context
+    username: string
+    target: string
   }
 }
 
