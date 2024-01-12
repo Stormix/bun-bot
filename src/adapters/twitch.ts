@@ -181,6 +181,18 @@ export default class TwitchAdapter extends Adapter<TwitchContext> {
           })
           break
         }
+        case ActivityType.TwitchRoulette: {
+          const payload: ActivityPayload[ActivityType.TwitchRoulette] = {
+            message: text,
+            context: this.createContext(message as PrivateMessage),
+            username: message.username
+          }
+          this.bot.brain.handle({
+            type: activityType,
+            payload
+          })
+          break
+        }
         default:
           this.logger.warn(`Unknown activity type ${activityType} for reward ${rewardId}`)
           return

@@ -174,7 +174,7 @@ export default class Twitch {
     }
   }
 
-  public async timeoutUser(tokens: TwitchTokens, username: string, duration = 60) {
+  public async timeoutUser(tokens: TwitchTokens, username: string, duration = 60, reason = 'Votekicked :)') {
     try {
       const broadcaster_id = '102784954'
       const instance = await this.getRefreshedInstance(tokens)
@@ -184,8 +184,12 @@ export default class Twitch {
       return instance.post(`/moderation/bans?broadcaster_id=${broadcaster_id}&moderator_id=${broadcaster_id}`, {
         data: {
           user_id: user.id,
-          duration,
-          reason: 'Votekicked :)'
+          ...(duration
+            ? {
+                duration
+              }
+            : {}),
+          reason
         }
       })
     } catch (error) {
