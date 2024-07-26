@@ -14,6 +14,7 @@ import Adapter from '../lib/adapter'
 export default class TwitchAdapter extends Adapter<TwitchContext> {
   client: Chat | null = null
   api: Api | null = null
+  followedChannels = ['hilala007', 'ghoull7', 'aiphey']
 
   constructor(bot: Bot) {
     super(bot, Adapters.TWITCH)
@@ -246,7 +247,9 @@ export default class TwitchAdapter extends Adapter<TwitchContext> {
     await this.listenForRewardRedemptions()
 
     await this.client.connect()
-    await this.client.join(this.bot.config.env.TWITCH_CHANNEL)
+    await Promise.all(
+      [this.bot.config.env.TWITCH_CHANNEL, ...this.followedChannels].map((channel) => this.client?.join(channel))
+    )
   }
 
   async createPoll(question: string, options: string[], context: Context): Promise<PollResults> {

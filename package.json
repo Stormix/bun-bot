@@ -9,18 +9,22 @@
     "genversion": "genversion --es6 --semi src/version.ts",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
-  "dependencies": { "@prisma/client": "^5.5.2", "@sentry/bun": "^7.77.0", "axios": "^1.6.0", "axios-auth-refresh": "^3.3.6", "date-fns": "^2.30.0", "discord.js": "^14.13.0", "envalid": "^8.0.0", "glob": "^10.3.10", "lodash": "^4.17.21", "node-graceful-shutdown": "^1.1.5", "redis": "^4.6.10", "tslog": "^4.9.2", "twitch-js": "^2.0.0-beta.45" },
+  "dependencies": { "@prisma/client": "^5.5.2", "@sentry/bun": "^7.77.0", "axios": "^1.6.0", "axios-auth-refresh": "^3.3.6", "date-fns": "^2.30.0", "discord.js": "^14.13.0", "envalid": "^8.0.0", "glob": "^10.3.10", "lodash": "^4.17.21", "node-graceful-shutdown": "^1.1.5", "puppeteer": "^22.14.0", "puppeteer-extra": "^3.3.6", "puppeteer-extra-plugin-stealth": "^2.11.2", "redis": "^4.6.10", "tslog": "^4.9.2", "twitch-js": "^2.0.0-beta.45" },
   "devDependencies": {
+    "@total-typescript/ts-reset": "^0.5.1",
+    "@types/bun": "latest",
     "@types/lodash": "^4.14.200",
+    "@types/ws": "^8.5.11",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
-    "bun-types": "^1.0.7",
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "genversion": "^3.1.1",
     "prettier": "^3.0.3",
-    "prisma": "^5.5.2",
-    "typescript": "^5.2.2"
+    "prisma": "^5.5.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   }
 }

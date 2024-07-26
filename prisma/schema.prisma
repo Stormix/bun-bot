@@ -15,6 +15,7 @@ enum CommandType {
 enum Adapters {
   TWITCH
   DISCORD
+  KICK
   CLI
 }
 

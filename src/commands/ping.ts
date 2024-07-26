@@ -1,5 +1,5 @@
 import BuiltinCommand from '@/lib/command'
-import type { Context, DiscordContext, TwitchContext } from '@/types/context'
+import type { Context, DiscordContext, KickContext, TwitchContext } from '@/types/context'
 import { Adapters } from '@prisma/client'
 
 export default class PingCommand extends BuiltinCommand {
@@ -18,6 +18,10 @@ export default class PingCommand extends BuiltinCommand {
         const now = new Date().getTime()
         const diff = Math.abs(time - now)
         return c.adapter.send(`Pong! Took ${diff}ms`, c)
+      }
+      case Adapters.KICK: {
+        const c = context as KickContext
+        return c.adapter.send('Pong!', c)
       }
       default: {
         return

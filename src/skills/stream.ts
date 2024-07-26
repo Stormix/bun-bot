@@ -29,7 +29,7 @@ export default class EndStream extends Skill {
       const output = await promise
 
       // check if the process is running
-      const matches = output.matchAll(/Streamlabs OBS.exe \s*([0-9]*)/gi)
+      const matches = output.matchAll(/obs64.exe \s*([0-9]*)/gi)
 
       for (const match of matches) {
         const pid = match[1]
@@ -37,7 +37,7 @@ export default class EndStream extends Skill {
         console.log('Running: ', 'taskkill', ['/pid', pid, '/f', '/t'])
         spawn('taskkill', ['/pid', pid, '/f', '/t'])
       }
-      await context.adapter.send(`Streamlabs OBS has been closed. Have a good day everyone!`, context)
+      await context.adapter.send(`OBS has been closed. Have a good day everyone!`, context)
     } catch (error) {
       Sentry.captureException(error)
       this.logger.error('Failed to handle activity: ', error)
