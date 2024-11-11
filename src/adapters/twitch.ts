@@ -182,6 +182,18 @@ export default class TwitchAdapter extends Adapter<TwitchContext> {
           })
           break
         }
+        case ActivityType.TwitchShakeScreen: {
+          const payload: ActivityPayload[ActivityType.TwitchShakeScreen] = {
+            message: text,
+            context: this.createContext(message as PrivateMessage),
+            username: message.username
+          }
+          this.bot.brain.handle({
+            type: activityType,
+            payload
+          })
+          break
+        }
         case ActivityType.TwitchRoulette: {
           const payload: ActivityPayload[ActivityType.TwitchRoulette] = {
             message: text,

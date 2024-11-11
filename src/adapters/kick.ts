@@ -77,7 +77,7 @@ export default class KickAdapter extends Adapter<KickContext> {
     await this.listenForMessages()
 
     await this.client.connect()
-    await this.client.join(env.KICK_CHANNEL)
+    await this.client.join('ieozthndh')
   }
 
   async stop() {
